@@ -1,0 +1,35 @@
+server:
+  port: 8080
+
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_ADDRESS}/${MYSQL_DATABASE:springboot_demo}
+    username: ${MYSQL_USERNAME}
+    password: ${MySQL_PASSWORD}
+  mvc:
+    view:
+      suffix: .html
+      prefix: /
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    jdbc-type-for-null: 'null'
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.billback.entity
+
+wechat:
+  appid: wxad964e84378db247
+  secret: 59523fbf2c7670bec48d5418ff7082b7
+jwt:
+  secret: yourpjwtpsecretpkeypatpleastp32pcharactersplong
+  expiration: 2592000  # 30天
